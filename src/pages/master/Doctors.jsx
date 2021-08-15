@@ -1,89 +1,127 @@
-import React from 'react';
-
-import ODataStore from 'devextreme/data/odata/store';
-
-import DataGrid, {
-  Column,
-  Grouping,
-  GroupPanel,
-  Pager,
-  Paging,
-  SearchPanel
+import axios from 'axios';
+import {
+    Column,
+    Lookup
 } from 'devextreme-react/data-grid';
+import 'devextreme-react/text-area';
+import CustomStore from 'devextreme/data/custom_store';
+import React, { Fragment } from 'react';
+import { Breadcrumbs, Link, makeStyles, Typography } from '@material-ui/core';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import GrainIcon from '@material-ui/icons/Grain';
+import 'whatwg-fetch';
+import { DataGridItemEditing, DataGridOptions, SmartERPDataGrid } from '../../components/devx';
+import { DOCTORS } from '../../global/api-endpoint'
 
-import DiscountCell from './DiscountCell.js';
+const useStyles = makeStyles((theme) => ({
+    link: {
+        display: 'flex',
+    },
+    icon: {
+        marginRight: theme.spacing(0.5),
+        width: 20,
+        height: 20,
+    },
+}));
 
-const pageSizes = [10, 25, 50, 100];
+const masterDoctorsData = new CustomStore({
+    key: 'BranchId',
+    loadMode: 'raw',
+    load: async () => {
+        try {
+            const response = await axios.get(DOCTORS.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const { data } = response;
 
-const dataSourceOptions = {
-  store: new ODataStore({
-    url: 'https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes',
-    key: 'Id',
-    beforeSend: function(request) {
-      request.params.startDate = '2020-05-10';
-      request.params.endDate = '2020-05-15';
+            if (response.status === 200) return data;
+
+            return false
+        } catch (e) {
+            console.log('Error', e.response.data);
+        }
+    },
+    insert: async (values) => {
+        try {
+            const response = await axios.post(DOCTORS.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const { data } = response;
+            
+            if (response.status === 200) return data;
+
+            return response.data.message
+        } catch (e) {
+            console.log('Error', e.response.data);
+        }
+    },
+    remove: async (key) => {
+        try {
+            const response = await axios.delete(DOCTORS.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const { data } = response;
+            
+            if (response.status === 200) return data;
+
+            return response.data.message
+        } catch (e) {
+            console.log('Error', e.response.data);
+        }
+    },
+    update: async (key, values) => {
+        try {
+            const response = await axios.put(DOCTORS.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const { data } = response;
+            
+            if (response.status === 200) return data;
+
+            return response.data.message
+        } catch (e) {
+            console.log('Error', e.response.data);
+        }
     }
-  })
-};
+})
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: false
-    };
-    this.onContentReady = this.onContentReady.bind(this);
-  }
-  render() {
+export default function Doctors() {
+    const classes = useStyles();
     return (
-      <DataGrid
-        dataSource={dataSourceOptions}
-        allowColumnReordering={true}
-        showBorders={true}
-        onContentReady={this.onContentReady}
-      >
-        <GroupPanel visible={true} />
-        <SearchPanel visible={true} highlightCaseSensitive={true} />
-        <Grouping autoExpandAll={false} />
-
-        <Column dataField="Product" groupIndex={0} />
-        <Column
-          dataField="Amount"
-          caption="Sale Amount"
-          dataType="number"
-          format="currency"
-          alignment="right"
-        />
-        <Column
-          dataField="Discount"
-          caption="Discount %"
-          dataType="number"
-          format="percent"
-          alignment="right"
-          allowGrouping={false}
-          cellRender={DiscountCell}
-          cssClass="bullet"
-        />
-        <Column dataField="SaleDate" dataType="date" />
-        <Column dataField="Region" dataType="string" />
-        <Column dataField="Sector" dataType="string" />
-        <Column dataField="Channel" dataType="string" />
-        <Column dataField="Customer" dataType="string" width={150} />
-
-        <Pager allowedPageSizes={pageSizes} showPageSizeSelector={true} />
-        <Paging defaultPageSize={10} />
-      </DataGrid>
+        <Fragment>
+            <Breadcrumbs aria-label="breadcrumb">
+                <Link color="inherit" className={classes.link} >
+                    <WhatshotIcon className={classes.icon} />
+                    Master Data
+                </Link>
+                <Typography color="textPrimary" className={classes.link}>
+                    <GrainIcon className={classes.icon} />
+                    Doctors
+                </Typography>
+            </Breadcrumbs>
+            <SmartERPDataGrid id="Master Doctors" dataSource={masterDoctorsData}>
+                {DataGridOptions({ fileName: "MasterDoctors" })}
+                {[{ dataField: "DoctorId", caption: "ID", visible: false, fixed: true },
+                { dataField: "NIK", caption: "NIK", fixed: true },
+                { dataField: "STR", caption: "STR" },
+                { dataField: "DoctorName", caption: "Name" },
+                { dataField: "PlaceOfBirth", caption: "Place Birth" },
+                { dataField: "DateOfBirth", caption: "Date Birth", dataType: "date" },
+                { dataField: "Address", caption: "Address" },
+                { dataField: "PhoneNo1", caption: "Phone" },
+                { dataField: "PhoneNo2", caption: "Alt. Phone" },
+                { dataField: "Religion", caption: "Religion" },
+                { dataField: "Specialis", caption: "Specialis" },
+                { dataField: "ExperienceDate", caption: "ExperienceDate", dataType: "date" },
+                { dataField: "OperationalHour", caption: "Operational" },
+                { dataField: "CreatedBy", caption: "Created By" },
+                { dataField: "createdAt", caption: "Created At", dataType: "datetime" },
+                { dataField: "ModifiedBy", caption: "Modified By" },
+                { dataField: "updatedAt", caption: "Modified At", dataType: "datetime" }
+                ].map(({ Lookups, ...rest }, index) => <Column key={index} {...rest}>
+                    {Lookups && <Lookup {...Lookups} />}
+                </Column>
+                )}
+                {DataGridItemEditing({
+                    title: "Master Doctors",
+                    itemGroup1: {
+                        data: ["BranchName", "Address", "PhoneNo1", "PhoneNo2", "OperationalHour", "Latitude", "Longitude", "createdAt" ]
+                    },
+                    remark: "none"
+                })}
+            </SmartERPDataGrid>
+        </Fragment>
     );
-  }
-
-  onContentReady(e) {
-    if (!this.state.collapsed) {
-      e.component.expandRow(['EnviroCare']);
-      this.setState({
-        collapsed: true
-      });
-    }
-  }
 }
-
-export default App;
