@@ -113,10 +113,19 @@ export default function Doctors() {
                     {Lookups && <Lookup {...Lookups} />}
                 </Column>
                 )}
+                
                 {DataGridItemEditing({
                     title: "Master Doctors",
                     itemGroup1: {
-                        data: ["BranchName", "Address", "PhoneNo1", "PhoneNo2", "OperationalHour", "Latitude", "Longitude", "createdAt" ]
+                        options: {colSpan: 2, colCount: 2},
+                        data: ["Nik", "Str" ]
+                    },
+                    itemGroup2: {
+                        options: {colSpan: 2, colCount: 4},
+                        data: [ "DoctorName", "Religion", "Specialis", "ExperienceDate"],
+                    },itemGroup3: {
+                        options: {colSpan: 2, colCount: 4},
+                        data: ["PlaceOfBirth", "DateOfBirth", "Address", "PhoneNo1"],
                     },
                     remark: "none"
                 })}
