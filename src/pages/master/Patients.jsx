@@ -11,7 +11,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import GrainIcon from '@material-ui/icons/Grain';
 import 'whatwg-fetch';
 import { DataGridItemEditing, DataGridOptions, SmartERPDataGrid } from '../../components/devx';
-import { DOCTORS } from '../../global/api-endpoint'
+import { PATIENTS } from '../../global/api-endpoint'
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -29,7 +29,7 @@ const masterPatientsData = new CustomStore({
     loadMode: 'raw',
     load: async () => {
         try {
-            const response = await axios.get(DOCTORS.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.get(PATIENTS.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
 
             if (response.status === 200) return data;
@@ -41,7 +41,7 @@ const masterPatientsData = new CustomStore({
     },
     insert: async (values) => {
         try {
-            const response = await axios.post(DOCTORS.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.post(PATIENTS.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -53,7 +53,7 @@ const masterPatientsData = new CustomStore({
     },
     remove: async (key) => {
         try {
-            const response = await axios.delete(DOCTORS.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.delete(PATIENTS.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -65,7 +65,7 @@ const masterPatientsData = new CustomStore({
     },
     update: async (key, values) => {
         try {
-            const response = await axios.put(DOCTORS.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.put(PATIENTS.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -106,8 +106,6 @@ export default function Patients() {
                 { dataField: "Email", caption: "Email" },
                 { dataField: "Nationality", caption: "Origin" },
                 { dataField: "Religion", caption: "Religion" },
-                { dataField: "Specialis", caption: "Specialis" },
-                { dataField: "ExperienceDate", caption: "ExperienceDate", dataType: "date" },
                 { dataField: "CreatedBy", caption: "Created By" },
                 { dataField: "createdAt", caption: "Created At", dataType: "datetime" },
                 { dataField: "UpdatedBy", caption: "Modified By" },
