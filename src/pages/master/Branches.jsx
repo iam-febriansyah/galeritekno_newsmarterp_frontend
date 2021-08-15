@@ -11,8 +11,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import GrainIcon from '@material-ui/icons/Grain';
 import 'whatwg-fetch';
 import { DataGridItemEditing, DataGridOptions, SmartERPDataGrid } from '../../components/devx';
-import { CLIENTS } from '../../global/api-endpoint'
-const URL = process.env.REACT_APP_DB;
+import { BRANCHES } from '../../global/api-endpoint'
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -26,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const masterBranchesData = new CustomStore({
-    key: 'ClientId',
+    key: 'BranchId',
     loadMode: 'raw',
     load: async () => {
         try {
-            const response = await axios.get(CLIENTS.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.get(BRANCHES.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
 
             if (response.status === 200) return data;
@@ -42,7 +41,7 @@ const masterBranchesData = new CustomStore({
     },
     insert: async (values) => {
         try {
-            const response = await axios.post(CLIENTS.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.post(BRANCHES.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -54,7 +53,7 @@ const masterBranchesData = new CustomStore({
     },
     remove: async (key) => {
         try {
-            const response = await axios.delete(CLIENTS.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.delete(BRANCHES.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -66,7 +65,7 @@ const masterBranchesData = new CustomStore({
     },
     update: async (key, values) => {
         try {
-            const response = await axios.put(CLIENTS.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.put(BRANCHES.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -79,24 +78,29 @@ const masterBranchesData = new CustomStore({
 })
 
 export default function Branches() {
+    const classes = useStyles();
     return (
         <Fragment>
             <Breadcrumbs aria-label="breadcrumb">
-                <Link color="inherit" className={"classes.link"} >
-                    <WhatshotIcon className={"classes.icon"} />
+                <Link color="inherit" className={classes.link} >
+                    <WhatshotIcon className={classes.icon} />
                     Master Data
                 </Link>
-                <Typography color="textPrimary" className={"classes.link"}>
-                    <GrainIcon className={"classes.icon"} />
+                <Typography color="textPrimary" className={classes.link}>
+                    <GrainIcon className={classes.icon} />
                     Branches
                 </Typography>
             </Breadcrumbs>
             <SmartERPDataGrid id="Master Branches" dataSource={masterBranchesData}>
                 {DataGridOptions({ fileName: "MasterBranches" })}
-                {[{ dataField: "ClientId", caption: "ID", visible: false, fixed: true },
-                { dataField: "Url", caption: "URL", fixed: true },
-                { dataField: "IsActive", caption: "Active" },
-                { dataField: "CreatedBy", caption: "Created By" },
+                {[{ dataField: "BranchId", caption: "ID", visible: false, fixed: true },
+                { dataField: "BranchName", caption: "Branch Name", fixed: true },
+                { dataField: "Address", caption: "Address" },
+                { dataField: "PhoneNo1", caption: "Phone" },
+                { dataField: "PhoneNo2", caption: "Alt. Phone" },
+                { dataField: "OperationalHour", caption: "Operational" },
+                { dataField: "Latitude", caption: "Latitude" },
+                { dataField: "Longitude", caption: "Longitude" },
                 { dataField: "createdAt", caption: "Created At", dataType: "datetime" },
                 { dataField: "ModifiedBy", caption: "Modified By" },
                 { dataField: "updatedAt", caption: "Modified At", dataType: "datetime" }
@@ -107,7 +111,7 @@ export default function Branches() {
                 {DataGridItemEditing({
                     title: "Master Branches",
                     itemGroup1: {
-                        data: ["Url", "IsActive"]
+                        data: ["BranchName", "Address", "PhoneNo1", "PhoneNo2", "OperationalHour", "Latitude", "Longitude", "createdAt" ]
                     },
                     remark: "none"
                 })}
