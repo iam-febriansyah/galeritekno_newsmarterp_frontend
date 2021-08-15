@@ -24,8 +24,8 @@ export const routeConfig = [
     {name: "Patients", icon: ShowChartIcon, path: "/patients"},
     {name: "Polis", icon: AssessmentIcon, path: "/polis"},
     {name: "Services", icon: ShowChartIcon, path: "/services"},
-    {name: "Doctors Schedule", icon: AssessmentIcon, path: "/summary"},
-    {name: "Doctor Polis", icon: ShowChartIcon, path: "/stock"},
+    {name: "Doctors Schedule", icon: AssessmentIcon, path: "/doctorSchedules"},
+    {name: "Doctor Polis", icon: ShowChartIcon, path: "/dococtorPolis"},
   ]},
   {name: "User Page DEMO", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
     {name: "Registration", icon: ShowChartIcon, path: "/registration"},
