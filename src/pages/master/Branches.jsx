@@ -101,6 +101,7 @@ export default function Branches() {
                 { dataField: "OperationalHour", caption: "Operational" },
                 { dataField: "Latitude", caption: "Latitude" },
                 { dataField: "Longitude", caption: "Longitude" },
+                { dataField: "CreatedBy", caption: "Created By" },
                 { dataField: "createdAt", caption: "Created At", dataType: "datetime" },
                 { dataField: "ModifiedBy", caption: "Modified By" },
                 { dataField: "updatedAt", caption: "Modified At", dataType: "datetime" }
