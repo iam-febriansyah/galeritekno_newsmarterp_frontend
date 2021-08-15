@@ -11,7 +11,7 @@ import {
   Polis as MasterPolis,
   Services as MasterServices,
   DoctorSchedules as MasterDoctorSchedules,
-  DoctorPolis as MasterDoctorPolis,
+  DoctorsPolis as MasterDoctorsPolis,
 } from '../pages/master'
 const  routes = (
   <div>
@@ -26,7 +26,7 @@ const  routes = (
       <Route path="/polis" component={MasterPolis} />
       <Route path="/services" component={MasterServices} />
       <Route path="/doctorSchedules" component={MasterDoctorSchedules} />
-      <Route path="/coctorPolis" component={MasterDoctorPolis} />
+      <Route path="/doctorPolis" component={MasterDoctorsPolis} />
     </Switch>
   </div>
 )
