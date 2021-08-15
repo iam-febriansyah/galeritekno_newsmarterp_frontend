@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const masterDoctorsData = new CustomStore({
-    key: 'BranchId',
+    key: 'DoctorId',
     loadMode: 'raw',
     load: async () => {
         try {
@@ -94,8 +94,8 @@ export default function Doctors() {
             <SmartERPDataGrid id="Master Doctors" dataSource={masterDoctorsData}>
                 {DataGridOptions({ fileName: "MasterDoctors" })}
                 {[{ dataField: "DoctorId", caption: "ID", visible: false, fixed: true },
-                { dataField: "NIK", caption: "NIK", fixed: true },
-                { dataField: "STR", caption: "STR" },
+                { dataField: "Nik", caption: "NIK", fixed: true },
+                { dataField: "Str", caption: "STR" },
                 { dataField: "DoctorName", caption: "Name" },
                 { dataField: "PlaceOfBirth", caption: "Place Birth" },
                 { dataField: "DateOfBirth", caption: "Date Birth", dataType: "date" },
@@ -105,10 +105,9 @@ export default function Doctors() {
                 { dataField: "Religion", caption: "Religion" },
                 { dataField: "Specialis", caption: "Specialis" },
                 { dataField: "ExperienceDate", caption: "ExperienceDate", dataType: "date" },
-                { dataField: "OperationalHour", caption: "Operational" },
                 { dataField: "CreatedBy", caption: "Created By" },
                 { dataField: "createdAt", caption: "Created At", dataType: "datetime" },
-                { dataField: "ModifiedBy", caption: "Modified By" },
+                { dataField: "UpdatedBy", caption: "Modified By" },
                 { dataField: "updatedAt", caption: "Modified At", dataType: "datetime" }
                 ].map(({ Lookups, ...rest }, index) => <Column key={index} {...rest}>
                     {Lookups && <Lookup {...Lookups} />}
