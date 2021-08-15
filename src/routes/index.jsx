@@ -6,7 +6,12 @@ import SignIn from '../pages/auth/SignIn'
 import { 
   Clients as MasterClients,
   Doctors as MasterDoctors,
-  Branches as MasterBranches
+  Branches as MasterBranches,
+  Patients as MasterPatients,
+  Polis as MasterPolis,
+  Services as MasterServices,
+  DoctorSchedules as MasterDoctorSchedules,
+  DoctorPolis as MasterDoctorPolis,
 } from '../pages/master'
 const  routes = (
   <div>
@@ -17,6 +22,11 @@ const  routes = (
       <Route path="/clients" component={MasterClients} />
       <Route path="/branches" component={MasterBranches} />
       <Route path="/doctors" component={MasterDoctors} />
+      <Route path="/patients" component={MasterPatients} />
+      <Route path="/polis" component={MasterPolis} />
+      <Route path="/services" component={MasterServices} />
+      <Route path="/doctorSchedules" component={MasterDoctorSchedules} />
+      <Route path="/coctorPolis" component={MasterDoctorPolis} />
     </Switch>
   </div>
 )
