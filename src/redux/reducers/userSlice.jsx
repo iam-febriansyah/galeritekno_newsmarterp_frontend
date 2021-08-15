@@ -5,13 +5,11 @@ import { AUTH } from '../../global/api-endpoint';
 export const loginUser = createAsyncThunk(
   'users/login',
   async ({ UserName, UserPassword }, thunkAPI) => {
-    
     try {
       const response = await axios.post(AUTH.SIGNIN, JSON.stringify({ UserName, UserPassword }),{headers: { Accept: 'application/json', 'Content-Type': 'application/json' }});
       const { data } = response;
-      console.log(data)
+
       if (data.status) {
-        console.log("SUCCESS")
         localStorage.setItem('token', data.token);
         return data;
       } 
@@ -25,29 +23,29 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-export const forgotPassword = createAsyncThunk(
-  'users/forgot',
-  async ({ UserName, EmailAddress }, thunkAPI) => {
-    try {
+// export const forgotPassword = createAsyncThunk(
+//   'users/forgot',
+//   async ({ UserName, EmailAddress }, thunkAPI) => {
+//     try {
     
-      const response = await axios().post(AUTH.SIGNIN, JSON.stringify({ UserName, EmailAddress }),{headers: { Accept: 'application/json', 'Content-Type': 'application/json' }});
+//       const response = await axios.post(AUTH.SIGNIN, JSON.stringify({ UserName, EmailAddress }),{headers: { Accept: 'application/json', 'Content-Type': 'application/json' }});
 
-      let data = await response.json();
+//       let data = await response.json();
 
-      console.log('response', data);
+//       console.log('response', data);
 
-      if (response.status === 200) {
-        localStorage.setItem('token', data.token);
-        return data;
-      } else {
-        return thunkAPI.rejectWithValue(data);
-      }
-    } catch (e) {
-      console.log('Error', e.response.data);
-      thunkAPI.rejectWithValue(e.response.data);
-    }
-  }
-);
+//       if (response.status === 200) {
+//         localStorage.setItem('token', data.token);
+//         return data;
+//       } else {
+//         return thunkAPI.rejectWithValue(data);
+//       }
+//     } catch (e) {
+//       console.log('Error', e.response.data);
+//       thunkAPI.rejectWithValue(e.response.data);
+//     }
+//   }
+// );
 
 export const userSlice = createSlice({
   name: 'user',
@@ -57,7 +55,7 @@ export const userSlice = createSlice({
     isFetching: false,
     isSuccess: false,
     isError: false,
-    errorMessage: '',
+    Message: '',
   },
   reducers: {
     clearState: (state) => {
@@ -73,12 +71,15 @@ export const userSlice = createSlice({
       state.roleData = payload.role; 
       state.isFetching = false;
       state.isSuccess = true;
+      state.isError = false;
+      state.Message = payload.message;
       return state;
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isError = true;
-      state.errorMessage = payload.message;
+      state.isSuccess = false;
+      state.Message = payload.message;
     },
     [loginUser.pending]: (state) => {
       state.isFetching = true;

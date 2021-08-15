@@ -1,4 +1,4 @@
-const URL = process.env.REACT_APP_DB;
+const URL = process.env.REACT_APP_BACKEND;
 
 const API_ENDPOINT = {
   MASTER: {

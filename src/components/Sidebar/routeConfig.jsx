@@ -18,17 +18,17 @@ import {
 
 export const routeConfig = [
   {name: "Master Data", icon: InboxIcon, indent: 1, submenu: [
-    {name: "Clients", icon: AssessmentIcon, path: "/summary"},
-    {name: "Branches", icon: ShowChartIcon, path: "/stock"},
-    {name: "Doctors", icon: AssessmentIcon, path: "/summary"},
-    {name: "Patients", icon: ShowChartIcon, path: "/stock"},
-    {name: "Polis", icon: AssessmentIcon, path: "/summary"},
-    {name: "Services", icon: ShowChartIcon, path: "/stock"},
+    {name: "Clients", icon: AssessmentIcon, path: "/clients"},
+    {name: "Branches", icon: ShowChartIcon, path: "/branches"},
+    {name: "Doctors", icon: AssessmentIcon, path: "/doctors"},
+    {name: "Patients", icon: ShowChartIcon, path: "/patients"},
+    {name: "Polis", icon: AssessmentIcon, path: "/polis"},
+    {name: "Services", icon: ShowChartIcon, path: "/services"},
     {name: "Doctors Schedule", icon: AssessmentIcon, path: "/summary"},
     {name: "Doctor Polis", icon: ShowChartIcon, path: "/stock"},
   ]},
   {name: "User Page DEMO", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "REGISTRATION", icon: ShowChartIcon, path: "/stock"},
-    {name: "SIGN IN", icon: AssessmentIcon, path: "/summary"},
+    {name: "Registration", icon: ShowChartIcon, path: "/registration"},
+    {name: "Sign In", icon: AssessmentIcon, path: "/SignIn"},
   ]}
 ];

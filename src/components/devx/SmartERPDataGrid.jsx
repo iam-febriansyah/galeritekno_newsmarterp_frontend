@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import DataGrid from 'devextreme-react/data-grid';
-import useCookie from '../auth/useCookie'
 
 export default function SmartERPDataGrid({customRefresh, dataSource, id, children, 
     onEditingStart, 
@@ -33,9 +32,9 @@ export default function SmartERPDataGrid({customRefresh, dataSource, id, childre
             document.cookie = `${cookieVar}=${dummyCookie[index][1]} ; expires=${now.toUTCString()}`
         });
 
-        if( SmartERPToken === undefined || SmartERPToken.length < 1 ) {
-            window.location.href = '/';
-        }
+        // if( SmartERPToken === undefined || SmartERPToken.length < 1 ) {
+        //     window.location.href = '/';
+        // }
 
         // if(cookie) {
         //     updateCookie(cookie,15)
@@ -83,13 +82,13 @@ export default function SmartERPDataGrid({customRefresh, dataSource, id, childre
             document.cookie = `${cookieVar}=${dummyCookie[index][1]} ; expires=${now.toUTCString()}`
         });
 
-        if( SmartERPToken === undefined || SmartERPToken.length < 1 ) {
-            window.location.href = '/';
-        }
+        // if( SmartERPToken === undefined || SmartERPToken.length < 1 ) {
+        //     window.location.href = '/';
+        // }
 
-        if(cookie) {
-            updateCookie(cookie,15)
-        }
+        // if(cookie) {
+        //     updateCookie(cookie,15)
+        // }
     }
       
     return React.createElement(DataGrid, 

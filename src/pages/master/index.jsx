@@ -1,0 +1,5 @@
+export { default as Clients } from './Clients'
+export { default as Branches } from './Branches'
+export { default as Doctors } from './Doctors'
+export { default as Patients } from './Patients'
+export { default as Polis } from './Polis'
