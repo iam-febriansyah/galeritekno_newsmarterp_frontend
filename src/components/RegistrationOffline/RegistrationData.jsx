@@ -5,7 +5,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import { styled } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 // import SearchIcon from '@material-ui/icons/Search';
-import { FiSearch } from 'react-icons/fi'
+// import { FiSearch } from 'react-icons/fi'
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const styles = theme => ({
@@ -166,7 +166,7 @@ function RegistrationData(props) {
                     color="primary"
                     margin="normal"
                     className={classes.button}
-                    endIcon={<FiSearch />}
+                    endIcon={<div></div>}
                 >
                     Search
                 </Button>

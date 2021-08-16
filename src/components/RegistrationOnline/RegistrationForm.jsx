@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import 'date-fns';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -53,7 +53,7 @@ const styles = theme => ({
 
 function RegistrationForm(props) {
     const { classes } = props;
-    const navigate = useNavigate();
+    const navigate = useHistory();
     const [showPassword, setShowPassword] = useState(false);
 
     const LoginSchema = Yup.object().shape({

@@ -14,21 +14,37 @@ import {
   Repeat as RepeatIcon,
   Storage as StorageIcon,
   Done as DoneIcon,
+  PeopleAlt as PeopleAltIcon,
+  Domain as DomainIcon,
+  LocalHospital as LocalHospitalIcon,
+  Build as BuildIcon,
+  Schedule as ScheduleIcon,
+  PeopleOutline as PeopleOutlineIcon
 } from '@material-ui/icons';
 
 export const routeConfig = [
   {name: "Master Data", icon: InboxIcon, indent: 1, submenu: [
-    {name: "Clients", icon: AssessmentIcon, path: "/clients"},
-    {name: "Branches", icon: ShowChartIcon, path: "/branches"},
+    {name: "Clients", icon: PeopleAltIcon, path: "/clients"},
+    {name: "Branches", icon: DomainIcon, path: "/branches"},
     {name: "Doctors", icon: AssessmentIcon, path: "/doctors"},
-    {name: "Patients", icon: ShowChartIcon, path: "/patients"},
-    {name: "Polis", icon: AssessmentIcon, path: "/polis"},
-    {name: "Services", icon: ShowChartIcon, path: "/services"},
-    {name: "Doctors Schedule", icon: AssessmentIcon, path: "/doctorSchedules"},
-    {name: "Doctor Polis", icon: ShowChartIcon, path: "/doctorPolis"},
+    {name: "Patients", icon: PeopleOutlineIcon, path: "/patients"},
+    {name: "Polis", icon: LocalHospitalIcon, path: "/polis"},
+    {name: "Services", icon: BuildIcon, path: "/services"},
+    {name: "Doctors Schedule", icon: ScheduleIcon, path: "/doctorSchedules"},
+    {name: "Doctor Polis", icon: AssessmentIcon, path: "/doctorPolis"},
   ]},
   {name: "User Page DEMO", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "Registration", icon: ShowChartIcon, path: "/registration"},
+    {name: "Registration", icon: AssessmentIcon, path: "/registration"},
     {name: "Sign In", icon: AssessmentIcon, path: "/SignIn"},
+  ]},
+  {name: "Demo", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
+    {name: "Registration Offline", icon: AssessmentIcon, path: "/registration"},
+    {name: "Registration Online", icon: AssessmentIcon, path: "/SignIn"},
+  ]},
+  {name: "Demo Page", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
+    {name: "Page 1", icon: AssessmentIcon, path: "/registration"},
+    {name: "Page 2", icon: AssessmentIcon, path: "/SignIn"},
+    {name: "Page 3", icon: AssessmentIcon, path: "/registration"},
+    {name: "Page 4", icon: AssessmentIcon, path: "/SignIn"},
   ]}
 ];

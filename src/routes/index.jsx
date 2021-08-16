@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router'
 import Hello from '../components/Hello'
 import MainLayout from '../layout'
 import SignIn from '../pages/auth/SignIn'
+import RegistrationForm from '../components/RegistrationOnline/RegistrationForm'
 import { 
   Clients as MasterClients,
   Doctors as MasterDoctors,
@@ -12,7 +13,8 @@ import {
   Services as MasterServices,
   DoctorSchedules as MasterDoctorSchedules,
   DoctorsPolis as MasterDoctorsPolis,
-} from '../pages/master'
+} from '../pages/master';
+
 const  routes = (
   <div>
     <Switch>
@@ -27,6 +29,7 @@ const  routes = (
       <Route path="/services" component={MasterServices} />
       <Route path="/doctorSchedules" component={MasterDoctorSchedules} />
       <Route path="/doctorPolis" component={MasterDoctorsPolis} />
+      <Route path="/RegistrationForm" component={RegistrationForm} />
     </Switch>
   </div>
 )

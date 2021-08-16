@@ -3,10 +3,10 @@ import { RegistrationData, PaymentData, PersonalData } from '../components/Regis
 
 import React from 'react'
 import { useFormik, Form, FormikProvider } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function RegistrationPageOffline() {
-    const navigate = useNavigate();
+    const navigate = useHistory();
 
     const LoginSchema = Yup.object().shape({
         fullname: Yup.string().required('Enter Your Name').required('Name is Required'),
