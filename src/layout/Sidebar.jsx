@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Sidebar(props) {
+function Sidebar() {
   const classes = useStyles();
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const { open, handleDrawerClose } = props;
+  const open = useSelector(selectOpen);
 
   const drawer = (
     <div>
@@ -78,14 +78,4 @@ function Sidebar(props) {
   );
 }
 
-function mapState(state) {
-  return {
-    open: state.layout.open,
-  }
-}
-
-const mapDispatch = {
-  toggleSidebarMenu,
-};
-
-export default connect(mapState, mapDispatch)(Sidebar)
+export default Sidebar;
