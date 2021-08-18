@@ -13,6 +13,8 @@ export const layoutSlice = createSlice({
   },
 })
 
-export const { toggleSidebarMenu } = layoutSlice.actions
+export const { toggleSidebarMenu } = layoutSlice.actions;
 
-export default layoutSlice.reducer
+export const selectOpen = state => state.layout.open;
+
+export default layoutSlice.reducer;

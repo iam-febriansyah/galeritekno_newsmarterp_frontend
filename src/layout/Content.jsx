@@ -1,8 +1,6 @@
 import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx'
-import { connect } from "react-redux"
 import routes from '../routes'
 
 const drawerWidth = 340;
@@ -33,22 +31,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Content(props) {
-  const { open } = props
+function Content() {
+  const open = useSelector(selectOpen);
   const classes = useStyles();
 
   return (
     <main className={clsx(classes.content, { [classes.contentShift]: open })}>
         <div className={classes.drawerHeader} />
         { routes }
-      </main>
+    </main>
   )
 }
 
-function mapState(state) {
-  return {
-    open: state.layout.open,
-  }
-}
-
-export default connect(mapState)(Content)
+export default Content
