@@ -3,8 +3,7 @@ import { Toolbar, Typography, IconButton, AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import clsx from 'clsx';
-import { connect } from "react-redux"
-import { toggleSidebarMenu } from '../redux/reducers/layoutSlice'
+import { toggleSidebarMenu, selectOpen } from '../redux/reducers/layoutSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 const drawerWidth = 340;
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AppBarLayout = (props) => {
   const dispatch = useDispatch();
-  const { open } = props;
+  const open = useSelector(selectOpen);
   const classes = useStyles();
 
   return (
@@ -62,14 +61,4 @@ const AppBarLayout = (props) => {
   );
 }
 
-function mapState(state) {
-  return {
-    open: state.layout.open,
-  }
-}
-
-const mapDispatch = {
-  toggleSidebarMenu,
-};
-
-export default connect(mapState, mapDispatch)(AppBarLayout)
+export default AppBarLayout

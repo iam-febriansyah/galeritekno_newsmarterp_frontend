@@ -9,8 +9,7 @@ import {
 import { routeConfig } from '../components/Sidebar/routeConfig'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { NavItemSimple, NavItemCollapse } from '../components/Sidebar/NavItem' 
-import { connect } from "react-redux"
-import { toggleSidebarMenu } from '../redux/reducers/layoutSlice'
+import { toggleSidebarMenu, selectOpen } from '../redux/reducers/layoutSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 const drawerWidth = 340;

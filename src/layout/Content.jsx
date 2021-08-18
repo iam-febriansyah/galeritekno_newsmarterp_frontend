@@ -2,6 +2,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx'
 import routes from '../routes'
+import { selectOpen } from '../redux/reducers/layoutSlice'
+import { useSelector } from 'react-redux'
 
 const drawerWidth = 340;
 
