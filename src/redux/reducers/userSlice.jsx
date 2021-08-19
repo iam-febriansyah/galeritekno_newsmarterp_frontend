@@ -7,6 +7,7 @@ export const loginUser = createAsyncThunk(
   async ({ UserName, UserPassword }, thunkAPI) => {
     try {
       const response = await axios.post(AUTH.SIGNIN, JSON.stringify({ UserName, UserPassword }),{headers: { Accept: 'application/json', 'Content-Type': 'application/json' }});
+      
       const { data } = response;
 
       if (data.status) {
