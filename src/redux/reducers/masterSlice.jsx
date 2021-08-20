@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { clients } from './master'
+import { branches, clients } from './master'
 
 export const masterSlice = createSlice({
   name: 'master',
   initialState: {
+    branches,
     clients,
     isFetching: false,
     isSuccess: false,
