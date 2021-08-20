@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CLIENTS } from '../../../global/api-endpoint';
 import CustomStore from 'devextreme/data/custom_store';
 
-const Barge = new CustomStore({
+const Clients = new CustomStore({
     key: 'ClientId',
     loadMode: 'raw',
     load: async () => {
@@ -56,4 +56,4 @@ const Barge = new CustomStore({
     }
 });
 
-export default Barge;
+export default Clients;
