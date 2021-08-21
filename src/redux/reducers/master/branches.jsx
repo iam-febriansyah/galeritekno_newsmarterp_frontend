@@ -3,7 +3,7 @@ import { BRANCHES } from '../../../global/api-endpoint';
 import CustomStore from 'devextreme/data/custom_store';
 
 const Branches = new CustomStore({
-    key: 'ClientId',
+    key: 'BranchesId',
     loadMode: 'raw',
     load: async () => {
         try {
