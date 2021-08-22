@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { DOCTORPOLIS } from '../../../global/api-endpoint';
+import { SERVICES } from '../../../global/api-endpoint';
 import CustomStore from 'devextreme/data/custom_store';
 
-const DoctorPolis = new CustomStore({
-    key: 'doctorPolisId',
+const Services = new CustomStore({
+    key: 'servicesId',
     loadMode: 'raw',
     load: async () => {
         try {
-            const response = await axios.get(DOCTORPOLIS.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.get(SERVICES.GETALL, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
 
             if (response.status === 200) return data;
@@ -20,7 +20,7 @@ const DoctorPolis = new CustomStore({
     insert: async (values) => {
         
         try {
-            const response = await axios.post(DOCTORPOLIS.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.post(SERVICES.POST, values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -32,7 +32,7 @@ const DoctorPolis = new CustomStore({
     },
     remove: async (key) => {
         try {
-            const response = await axios.delete(DOCTORPOLIS.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.delete(SERVICES.DELETE(key), { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -44,7 +44,7 @@ const DoctorPolis = new CustomStore({
     },
     update: async (key, values) => {
         try {
-            const response = await axios.put(DOCTORPOLIS.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
+            const response = await axios.put(SERVICES.UPDATE(key), values, { headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
             const { data } = response;
             
             if (response.status === 200) return data;
@@ -56,4 +56,4 @@ const DoctorPolis = new CustomStore({
     }
 });
 
-export default DoctorPolis;
+export default Services;
