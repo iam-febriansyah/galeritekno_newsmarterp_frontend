@@ -19,17 +19,16 @@ const  routes = (
   <div>
     <Switch>
       {/* <Route exact path="/" component={MainLayout} /> */}
-      <Route path="/summary" component={Hello} />
-      <Route path="/SignIn" component={SignIn} />
-      <Route path="/clients" component={MasterClients} />
-      <Route path="/branches" component={MasterBranches} />
-      <Route path="/doctors" component={MasterDoctors} />
-      <Route path="/patients" component={MasterPatients} />
-      <Route path="/polis" component={MasterPolis} />
-      <Route path="/services" component={MasterServices} />
-      <Route path="/doctorSchedules" component={MasterDoctorSchedules} />
-      <Route path="/doctorPolis" component={MasterDoctorsPolis} />
-      <Route path="/RegistrationForm" component={RegistrationForm} />
+      <Route path="/admin/summary" component={Hello} />
+      <Route path="/admin/clients" component={MasterClients} />
+      <Route path="/admin/branches" component={MasterBranches} />
+      <Route path="/admin/doctors" component={MasterDoctors} />
+      <Route path="/admin/patients" component={MasterPatients} />
+      <Route path="/admin/polis" component={MasterPolis} />
+      <Route path="/admin/services" component={MasterServices} />
+      <Route path="/admin/doctorSchedules" component={MasterDoctorSchedules} />
+      <Route path="/admin/doctorPolis" component={MasterDoctorsPolis} />
+      <Route path="/admin/RegistrationForm" component={RegistrationForm} />
     </Switch>
   </div>
 )

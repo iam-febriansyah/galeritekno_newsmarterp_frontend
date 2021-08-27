@@ -12,7 +12,7 @@ function App({ history }) {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/dashboard" component={MainLayout}/>
+        <Route path="/admin" component={MainLayout}/>
         <Route exact path="/">
           <SignIn/>
         </Route>

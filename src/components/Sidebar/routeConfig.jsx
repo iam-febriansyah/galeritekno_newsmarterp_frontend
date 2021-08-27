@@ -24,27 +24,27 @@ import {
 
 export const routeConfig = [
   {name: "Master Data", icon: InboxIcon, indent: 1, submenu: [
-    {name: "Clients", icon: PeopleAltIcon, path: "/clients"},
-    {name: "Branches", icon: DomainIcon, path: "/branches"},
-    {name: "Doctors", icon: AssessmentIcon, path: "/doctors"},
-    {name: "Patients", icon: PeopleOutlineIcon, path: "/patients"},
-    {name: "Polis", icon: LocalHospitalIcon, path: "/polis"},
-    {name: "Services", icon: BuildIcon, path: "/services"},
-    {name: "Doctors Schedule", icon: ScheduleIcon, path: "/doctorSchedules"},
-    {name: "Doctor Polis", icon: AssessmentIcon, path: "/doctorPolis"},
+    {name: "Clients", icon: PeopleAltIcon, path: "/admin/clients"},
+    {name: "Branches", icon: DomainIcon, path: "/admin/branches"},
+    {name: "Doctors", icon: AssessmentIcon, path: "/admin/doctors"},
+    {name: "Patients", icon: PeopleOutlineIcon, path: "/admin/patients"},
+    {name: "Polis", icon: LocalHospitalIcon, path: "/admin/polis"},
+    {name: "Services", icon: BuildIcon, path: "/admin/services"},
+    {name: "Doctors Schedule", icon: ScheduleIcon, path: "/admin/doctorSchedules"},
+    {name: "Doctor Polis", icon: AssessmentIcon, path: "/admin/doctorPolis"},
   ]},
   {name: "User Page DEMO", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "Registration", icon: AssessmentIcon, path: "/registration"},
-    {name: "Sign In", icon: AssessmentIcon, path: "/SignIn"},
+    {name: "Registration", icon: AssessmentIcon, path: "/admin/registration"},
+    {name: "Sign In", icon: AssessmentIcon, path: "/admin/SignIn"},
   ]},
   {name: "Demo", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "Registration Offline", icon: AssessmentIcon, path: "/registration"},
-    {name: "Registration Online", icon: AssessmentIcon, path: "/SignIn"},
+    {name: "Registration Offline", icon: AssessmentIcon, path: "/admin/registration"},
+    {name: "Registration Online", icon: AssessmentIcon, path: "/admin/SignIn"},
   ]},
   {name: "Demo Page", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "Page 1", icon: AssessmentIcon, path: "/registration"},
-    {name: "Page 2", icon: AssessmentIcon, path: "/SignIn"},
-    {name: "Page 3", icon: AssessmentIcon, path: "/registration"},
-    {name: "Page 4", icon: AssessmentIcon, path: "/SignIn"},
+    {name: "Page 1", icon: AssessmentIcon, path: "/admin/registration"},
+    {name: "Page 2", icon: AssessmentIcon, path: "/admin/SignIn"},
+    {name: "Page 3", icon: AssessmentIcon, path: "/admin/registration"},
+    {name: "Page 4", icon: AssessmentIcon, path: "/admin/SignIn"},
   ]}
 ];
