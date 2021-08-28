@@ -46,19 +46,24 @@ const getIdNest = (props) => {
 };
 
 export function NavItemSimple({ element }) {
-
+  const { path } = element;
+  const renderLink = React.useMemo(
+    () => React.forwardRef((itemProps, ref) => {
+    return <Link to={path} ref={ref} {...itemProps} />}),
+    [path],
+  );
   return (
-    <ListItem button>
+    <ListItem component={renderLink} button>
       <ListItemIcon>
-        <SendIcon />
+        {React.createElement(element.icon)}
       </ListItemIcon>
-      <ListItemText primary="Sent mail" />
+      <ListItemText primary={element.name} />
     </ListItem>
   );
 }
 
 const NavItem = ({listelement, classes, item}) => {
-  const { path } = listelement
+  const { path } = listelement;
   const renderLink = React.useMemo(
     () => React.forwardRef((itemProps, ref) => {
       // console.log(itemProps)

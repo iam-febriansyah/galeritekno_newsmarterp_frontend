@@ -37,10 +37,7 @@ export const routeConfig = [
     {name: "Registration", icon: AssessmentIcon, path: "/admin/registration"},
     {name: "Sign In", icon: AssessmentIcon, path: "/admin/SignIn"},
   ]},
-  {name: "Demo", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
-    {name: "Registration Offline", icon: AssessmentIcon, path: "/admin/registration"},
-    {name: "Registration Online", icon: AssessmentIcon, path: "/admin/SignIn"},
-  ]},
+  {name: "Rawat Jalan", icon: LocalHospitalIcon, indent: 1, path: "/admin/rawatjalan"},
   {name: "Demo Page", icon: SupervisedUserCircleIcon, indent: 1, submenu: [
     {name: "Page 1", icon: AssessmentIcon, path: "/admin/registration"},
     {name: "Page 2", icon: AssessmentIcon, path: "/admin/SignIn"},
