@@ -1,12 +1,13 @@
-import { Column, Lookup } from 'devextreme-react/data-grid';
+import { Column, Lookup, Button as GridButton } from 'devextreme-react/data-grid';
 import 'devextreme-react/text-area';
 import { useSelector, useDispatch } from 'react-redux'
 import React, { Fragment } from 'react';
-import { Breadcrumbs, Link, makeStyles, Typography } from '@material-ui/core';
+import { Breadcrumbs, Link, makeStyles, Typography, Button } from '@material-ui/core';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import GrainIcon from '@material-ui/icons/Grain';
 import 'whatwg-fetch';
 import { DataGridItemEditing, DataGridOptions, SmartERPDataGrid } from '../components/devx';
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -26,9 +27,14 @@ const dummyData = [
 ]
 
 export default function RawatJalan() {
+    const history = useHistory();
     const branchesStore = useSelector((state) => state.master.branches);
     const dispatch = useDispatch();
     const classes = useStyles();
+
+    const prosesButton = (props) => {
+        return <Button variant="contained" color="primary" onClick={() => history.push(`/admin/rawatjalan/${props?.data?.noreg}`)}>Proses</Button>
+    }
 
     return (
         <Fragment>
@@ -57,6 +63,10 @@ export default function RawatJalan() {
                     {Lookups && <Lookup {...Lookups} />}
                 </Column>
                 )}
+     
+                <Column type="buttons">
+                    <GridButton hint="Proses" render={prosesButton} onClick={""}/>
+                </Column>
                 {DataGridItemEditing({
                     title: "Master Branches",
                     itemGroup1: {

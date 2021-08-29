@@ -5,6 +5,7 @@ import MainLayout from '../layout';
 import SignIn from '../pages/auth/SignIn';
 import RegistrationForm from '../components/RegistrationOnline/RegistrationForm';
 import RawatJalan from '../pages/RawatJalan'
+import RawanJalanDetail from '../pages/RawatJalanDetail'
 import { 
   Clients as MasterClients,
   Doctors as MasterDoctors,
@@ -29,7 +30,9 @@ const  routes = (
       <Route path="/admin/doctorSchedules" component={MasterDoctorSchedules} />
       <Route path="/admin/doctorPolis" component={MasterDoctorsPolis} />
       <Route path="/admin/RegistrationForm" component={RegistrationForm} />
+      <Route path="/admin/rawatjalan/:id" component={RawanJalanDetail} />
       <Route path="/admin/rawatjalan" component={RawatJalan} />
+      
     </Switch>
   </div>
 )
