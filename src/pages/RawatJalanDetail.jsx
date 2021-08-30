@@ -1,7 +1,7 @@
 import { Button, Grid, Paper, makeStyles, Typography, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -102,6 +102,18 @@ export default function RawatJalanDetail() {
                     </Grid>
                 </Grid>
             </Paper>
+            <Paper>
+                <Typography className={classes.title}>Pemeriksaan dan Tindakan Dokter Poli</Typography>
+                <Link to=""/>
+                <Link to=""/>
+                <Link to=""/>
+                <Link to=""/>
+                <Link to=""/>
+                <Grid container spacing={3}>
+
+                </Grid>
+            </Paper>
+            
             <Grid item xs={3}>
                 <Paper className={classes.paper}>xs=3</Paper>
             </Grid>
