@@ -3,11 +3,17 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import DateFnsUtils from '@date-io/date-fns';
+import AppBar from '@material-ui/core/AppBar';
+import PropTypes from 'prop-types';
+import Tabs from '@material-ui/core/Tabs';
+import Box from '@material-ui/core/Box';
+import Tab from '@material-ui/core/Tab';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -35,13 +41,51 @@ const doctorName = [
     { name: 'dr. Andre'},
     { name: 'dr. Bobi'},
   ];
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
 export default function RawatJalanDetail() {
     const history = useHistory();
     const classes = useStyles();
     const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [value, setValue] = React.useState(0);  
 
     const handleDateChange = (date) => {
       setSelectedDate(date);
+    };
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
     return (
         <Grid container spacing={3}>
@@ -102,30 +146,57 @@ export default function RawatJalanDetail() {
                     </Grid>
                 </Grid>
             </Paper>
-            <Paper>
+            <Paper className={classes.paper}>
                 <Typography className={classes.title}>Pemeriksaan dan Tindakan Dokter Poli</Typography>
-                <Link to=""/>
-                <Link to=""/>
-                <Link to=""/>
-                <Link to=""/>
-                <Link to=""/>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="scrollable auto tabs example"
+                >
+                    <Tab label="Item One" {...a11yProps(0)} />
+                    <Tab label="Item Two" {...a11yProps(1)} />
+                    <Tab label="Item Three" {...a11yProps(2)} />
+                    <Tab label="Item Four" {...a11yProps(3)} />
+                    <Tab label="Item Five" {...a11yProps(4)} />
+                    <Tab label="Item Six" {...a11yProps(5)} />
+                    <Tab label="Item Seven" {...a11yProps(6)} />
+                </Tabs>
+                <Link to="">Fisik</Link>
+                <Link to="">Diagnosa ICD-X</Link>
+                <Link to="">Tindakan</Link>
+                <Link to="">BHP</Link>
+                <Link to="">Resep</Link>
+                <Link to="">Pemeriksaan Lab</Link>
+                <Link to="">Pemeriksaan Penunjang</Link>
+                <Link to="">SOAP</Link>
                 <Grid container spacing={3}>
-
+                    <TabPanel value={value} index={0}>
+                        Item One
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        Item Two
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        Item Three
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        Item Four
+                    </TabPanel>
+                    <TabPanel value={value} index={4}>
+                        Item Five
+                    </TabPanel>
+                    <TabPanel value={value} index={5}>
+                        Item Six
+                    </TabPanel>
+                    <TabPanel value={value} index={6}>
+                        Item Seven
+                    </TabPanel>
                 </Grid>
             </Paper>
-            
-            <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-                <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
         </Grid>
     )
 }
